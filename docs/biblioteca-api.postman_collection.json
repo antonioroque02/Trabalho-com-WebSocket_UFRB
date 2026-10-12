@@ -1,0 +1,60 @@
+{
+  "info": {
+    "name": "Sistema de Biblioteca - API de Livros",
+    "description": "Colecao para o laboratorio de rotas HTTP. Pode ser importada no Postman ou Insomnia.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Listar livros",
+      "request": { "method": "GET", "url": "{{baseUrl}}/livros" }
+    },
+    {
+      "name": "Buscar livro por ID",
+      "request": { "method": "GET", "url": "{{baseUrl}}/livros/1" }
+    },
+    {
+      "name": "Criar livro",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Capitaes da Areia\",\n  \"autor\": \"Jorge Amado\",\n  \"ano\": 1937\n}"
+        },
+        "url": "{{baseUrl}}/livros"
+      }
+    },
+    {
+      "name": "Atualizar livro",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Capitaes da Areia - Edicao revisada\",\n  \"autor\": \"Jorge Amado\",\n  \"ano\": 1937\n}"
+        },
+        "url": "{{baseUrl}}/livros/3"
+      }
+    },
+    {
+      "name": "Remover livro",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/livros/3" }
+    },
+    {
+      "name": "Validacao - dados invalidos",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"\",\n  \"autor\": \"\",\n  \"ano\": 999\n}"
+        },
+        "url": "{{baseUrl}}/livros"
+      }
+    }
+  ]
+}
